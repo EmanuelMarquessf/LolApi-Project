@@ -9,27 +9,29 @@ function loadChamps()
         console.log(lolChampions)
         for (let champion in lolChampions){
             const imgUrl = `http://ddragon.leagueoflegends.com/cdn/13.6.1/img/champion/${lolChampions[champion].image.full}`
-            const divCard = document.createElement('a');
-            divCard.setAttribute('href', `../../champPage.html?data=${champion}`)
-            champCards.appendChild(divCard);
-
-            const card = document.createElement('img');
-            card.setAttribute('class', 'cards');
-            card.setAttribute('src', imgUrl);
-            divCard.appendChild(card)
+            const aCard = document.createElement('a');
+            aCard.setAttribute('href', `../../champPage.html?data=${champion}`)
+            aCard.innerHTML = `
+                <div class= "divIcon">
+                    <img class="cards" src="${imgUrl}">
+                    <p class="pChampName">${lolChampions[champion].id}</p>
+                </div>
+            `
+            champCards.appendChild(aCard);
         };
     })
 }
 
-function openModal(nameChampion) {
-    const url = `http://ddragon.leagueoflegends.com/cdn/13.6.1/data/en_US/champion/${nameChampion}.json`
+function openModal(champName, numSkin) {
+    const urlImgSplash = `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champName}_${numSkin}.jpg`;
     modal.style.display = "block";
 
-    axios.get(url).then(response => {
-        const selectedChampion = response.data.data
-        console.log(selectedChampion)
-        createChampLoadScreen(selectedChampion)
-    })
+    const content = document.getElementById('content')
+    content.innerHTML = `
+        <span class="close" id="close" onclick="closeModal()">&times;</span>
+        <img class="imgSplash" src = "${urlImgSplash}">
+    `
+
 }
 
 function createChampLoadScreen(selectedChampion){
@@ -91,29 +93,27 @@ function loadSelectedChamp(){
 }
 
 function createChampLoadScreen(selectedChampion){
-    const champCard = document.querySelector('body');
+    const main = document.querySelector('main');
+    const champCard = document.querySelector('main');
     const champName = Object.keys(selectedChampion)[0];
 
     const countSkins = selectedChampion[champName].skins.length;
 
-    champCard.innerHTML='';
+    main.innerHTML='';
     for(let i=0; i < countSkins; i++){
         const numSkin = selectedChampion[champName].skins[i].num;
         const urlImgLoad = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champName}_${numSkin}.jpg`;
-        const urlImgSplash = `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champName}_${numSkin}.jpg`;
 
-        const aImgCard = document.createElement('a');
-        aImgCard.setAttribute('href', urlImgSplash);
-        aImgCard.setAttribute('target', '_black');
+        const divImgCard = document.createElement('div');
+        divImgCard.setAttribute('class', 'divImgCard')
 
-
-        champCard.appendChild(aImgCard);
-
-        const imgCard = document.createElement('img');
-        imgCard.setAttribute('class', 'imgCard')
-        imgCard.setAttribute('src', urlImgLoad);
-
-        aImgCard.appendChild(imgCard);
+        divImgCard.innerHTML = `
+            <div class="divCardLoad">
+                <img class="imgCard" onclick="openModal('${champName}', '${numSkin}')" src=${urlImgLoad}>
+                <p class="pChampName">${selectedChampion[champName].skins[i].name}</p>
+            </div>
+        `
+        main.appendChild(divImgCard);
     }
 }
 
