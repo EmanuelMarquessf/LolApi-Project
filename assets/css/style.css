@@ -1,45 +1,191 @@
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
 
-.divIcon, .divCardLoad{
+/*Index Page*/
+.bodyIndex{
+    background-color: #2AA3CC;
+}
+
+.champCards{
+    background-color: #f2f2f2;
+    width: 80%;
+    margin: 30px auto;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.divCardLoad {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.divIcon,
+.divCardLoad {
     padding: 10px;
     margin: 10px;
     display: inline-block;
     background-color: #2AA3CC;
+    border-radius: 5px;
 }
-.pChampName{
+
+.pChampName {
+    max-width: 110px;
     text-align: center;
-    font-size: 23px;
+    font-size: 17px;
+    background-color: aliceblue;
+    text-decoration: none;
+    color: black;
+}
+
+.pSkinName {
+    text-align: center;
+    max-width: 120px;
+    height: auto;
+    font-size: 16px;
     background-color: aliceblue;
     text-decoration: none;
     color: black;
     font-family: 'Spiegel', 'Arial Narrow', Arial, sans-serif;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+
 }
 
-.divImgCard{
+.cards {
+    width: 110px;
+    height: 110px;
+}
+/* ChampPage*/
+
+.champPage {
+    overflow: hidden;
+}
+.back-button {
+    background-image: url('../img/btnVoltar.png');
+    background-size: 75px 75px;
+    background-repeat: no-repeat;
+    background-position:center;
+    padding-left: 25px;
+    width: 75px;
+    height: 75px;
+    border-radius: 200px;
+    cursor: pointer;
+    
+}
+
+.divImgCard {
     display: inline-block;
+    cursor: pointer;
 }
 
-.imgSplash{
+.imgSplash {
     width: 100%;
     height: 100%;
+    
+}
+
+.imgCard {
+    width: 120px;
+}
+
+.champSplash {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 75%;
+    position: relative;
+}
+
+.champInformations {
+    padding: 20px;
+    width: 25%;
+    height: 100vh;
+    text-align: justify;
+    float: right;
+    background-color: #f9f9f9;
+    box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.5);
 
 }
 
-.cards{
-    width: 100px;
-    height: 100px;
+.champSkins {
+    width: 55%;
+    height: 290px;
+    overflow: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
 }
 
-.imgCard{
-    width: 200px;
-    height: 360px;
+.champTitle {
+    font-size: 70px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
 }
 
-.modal{
+.champInformations .champSubtitle {
+    font-size: 25px;
+    margin-left: 40px;
+}
+
+.champInformations .champLore {
+    font-size: 20px;
+    margin: 20px 0px;
+}
+
+/*Champ Stats*/
+
+.champStats {
+    width: 100%;
+    height: 170px;
+    background-color: #2AA3CC;
+    border-radius: 5px;
+}
+.statName{
+    width: 30%;
+    align-items: center;
+    background-color: #fff;
+    padding-left: 5px;
+    font-size: 20px;
+}
+
+.statValue{
+    width: 70%;
+    align-items: center;
+    background-color: #fff;
+}
+
+.stat{
+    width: 100%;
+    height: 38px;
+    background-color: #00daf8;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 22px;
+}
+
+
+/*Modal*/
+
+.modal {
     position: fixed;
     z-index: 10;
     left: 0;
@@ -50,7 +196,8 @@
     background-color: rgba(0, 0, 0, 0.4);
     display: none;
 }
-.modal-content{
+
+.modal-content {
     position: relative;
     background-color: #fefefe;
     margin: 2% auto;
@@ -58,6 +205,7 @@
     border: 1px solid #888;
     width: 70%;
     height: auto;
+    border-radius: 7px ;
 }
 
 
@@ -72,7 +220,35 @@
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
+
+/* Confi barra rolagem*/
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #f9f9f9;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f9f9f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+
+::-webkit-scrollbar-button {
+    background-color: #f9f9f9;
+}
+
+::-webkit-scrollbar-button:start:decrement {
+    background-color: #ccc;
+}
+
+::-webkit-scrollbar-button:end:increment {
+    background-color: #ccc;
+}
+
