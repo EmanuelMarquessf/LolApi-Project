@@ -58,6 +58,7 @@ function openModal(champName, numSkin) {
     `
 
 }
+var modal = document.getElementById("modal")
 function closeModal() {
     modal.style.display = "none";
 }
